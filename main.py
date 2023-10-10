@@ -1,6 +1,7 @@
 import pygame
 import sys
 from table import *
+from ball import *
 
 pygame.init()
 scr_h, scr_w = 400, 700
@@ -13,6 +14,9 @@ right_table = RightTable((680,175))
 tables = pygame.sprite.Group()
 tables.add(left_table)
 tables.add(right_table)
+ball = Ball((348,198))
+ball_group = pygame.sprite.GroupSingle()
+ball_group.add(ball)
 
 while True:
     for event in pygame.event.get():
@@ -23,6 +27,8 @@ while True:
 
     tables.draw(screen)
     tables.update()
+    ball_group.draw(screen)
+    ball.update()
 
     pygame.display.update()
     clock.tick(60)
